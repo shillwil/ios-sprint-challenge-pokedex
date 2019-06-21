@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hcJ-pe-cPF" style="IBUITableViewCellStyleDefault" id="95P-HJ-m5d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PokemonCell" textLabel="hcJ-pe-cPF" style="IBUITableViewCellStyleDefault" id="95P-HJ-m5d">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="95P-HJ-m5d" id="0JI-OI-UkE">
@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="SHH-dv-yOB" kind="show" identifier="CellSegue" id="VwE-Lv-1pS"/>
+                                    <segue destination="SHH-dv-yOB" kind="show" identifier="c" id="VwE-Lv-1pS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -205,6 +205,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9G6-oC-ORF"/>
+        <segue reference="VwE-Lv-1pS"/>
     </inferredMetricsTieBreakers>
 </document>

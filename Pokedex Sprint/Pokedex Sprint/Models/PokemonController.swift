@@ -24,7 +24,8 @@ class PokemonController {
     
     func searchPokemon(pokemonName: String, completion: @escaping (Error?) -> Void) {
         let allPokemonURL = baseURL.appendingPathComponent("pokemon")
-        var request = URLRequest(url: allPokemonURL)
+        let searchPokemonURL = allPokemonURL.appendingPathComponent(pokemonName)
+        var request = URLRequest(url: searchPokemonURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in

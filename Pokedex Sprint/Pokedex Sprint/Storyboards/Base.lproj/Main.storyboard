@@ -171,6 +171,7 @@
                         <outlet property="idLabel" destination="BBW-ah-Utg" id="pG0-TY-rAA"/>
                         <outlet property="imageView" destination="yQR-cx-B9f" id="Kw5-ag-gdU"/>
                         <outlet property="pokemonNameLabel" destination="UQ5-CV-a2e" id="NAG-26-y8O"/>
+                        <outlet property="searchBar" destination="YJ3-GA-WVr" id="Rpi-8p-sNx"/>
                         <outlet property="typesLabel" destination="v89-Fs-cl2" id="YQa-qt-7oZ"/>
                     </connections>
                 </viewController>

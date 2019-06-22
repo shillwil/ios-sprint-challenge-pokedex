@@ -16,38 +16,22 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+enum NetworkError: Error {
+    case noAuth
+    case badAuth
+    case otherError
+    case badData
+    case noDecode
+}
+
 class PokemonController {
-    private let baseURL = URL(string: "https://pokeapi.co/api/v2")!
+    private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
     private var imageC: UIImage?
     var pokemon: Pokemon?
     var pokemonList: [Pokemon] = []
     
-    func searchPokemon(pokemonName: String, completion: @escaping (Error?) -> Void) {
-        let allPokemonURL = baseURL.appendingPathComponent("pokemon")
-        let searchPokemonURL = allPokemonURL.appendingPathComponent(pokemonName)
-        var request = URLRequest(url: searchPokemonURL)
-        request.httpMethod = HTTPMethod.get.rawValue
+    func searchPokemon(pokemonName: String, completion: @escaping (Result<Pokemon, NetworkError>) -> Void) {
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            if let error = error {
-                print(error)
-                completion(error)
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil)
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let pokemonSearch = try decoder.decode(Pokemon.self, from: data)
-                self.pokemon = pokemonSearch
-            } catch {
-                print("Error decoding pokemon: \(error)")
-            }
-        }.resume()
     }
     
 }

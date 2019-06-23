@@ -16,6 +16,7 @@ class PokemonDetailViewController: UIViewController {
             updateViews()
         }
     }
+    var index: Int?
     
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
@@ -28,7 +29,7 @@ class PokemonDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        searchBar.delegate = self
     }
     
     
@@ -40,10 +41,11 @@ class PokemonDetailViewController: UIViewController {
     func updateViews() {
         guard let pokemonController = self.pokemonController else { return }
         guard let pokemon = pokemonController.pokemon else { return }
-        idLabel.text = String(pokemon.id)
+//        guard let index = index else { return }
+//        idLabel.text = String(pokemon.id)
         pokemonNameLabel.text = pokemon.name
-        typesLabel.text = pokemon.type
-        abilitiesLabel.text = pokemon.abilities
+//        typesLabel.text = pokemon.type.name
+//        abilitiesLabel.text = pokemon.abilityInfo.abilities[index].name
     }
     
 
@@ -53,7 +55,7 @@ extension PokemonDetailViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchingFor = searchBar.text else { return }
         guard let pokemonController = self.pokemonController else { return }
-        pokemonController.searchPokemon(pokemonName: searchingFor) { (error) in
+        pokemonController.searchPokemon(pokemonName: searchingFor) { (pokemon, error) in
             if let error = error {
                 print("Error searching pokemon: \(error)")
                 return

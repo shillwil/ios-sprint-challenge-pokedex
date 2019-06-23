@@ -57,6 +57,7 @@ class PokemonTableViewController: UITableViewController {
         case "SearchSegue":
             guard let pokemonVC = segue.destination as? PokemonDetailViewController else { return }
             let indexPath = IndexPath()
+            pokemonVC.index = indexPath.row
             pokemonVC.pokemonController = pokemonController
             pokemonController.pokemon = pokemonController.pokemonList[indexPath.row]
         default:

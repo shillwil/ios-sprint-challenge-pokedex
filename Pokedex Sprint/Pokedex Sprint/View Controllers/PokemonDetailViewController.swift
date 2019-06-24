@@ -42,9 +42,9 @@ class PokemonDetailViewController: UIViewController {
         guard let pokemonController = self.pokemonController else { return }
         guard let pokemon = pokemonController.pokemon else { return }
 //        guard let index = index else { return }
-//        idLabel.text = String(pokemon.id)
+        idLabel.text = String(pokemon.id)
         pokemonNameLabel.text = pokemon.name
-//        typesLabel.text = pokemon.type.name
+        typesLabel.text = pokemon.type.name
 //        abilitiesLabel.text = pokemon.abilityInfo.abilities[index].name
     }
     

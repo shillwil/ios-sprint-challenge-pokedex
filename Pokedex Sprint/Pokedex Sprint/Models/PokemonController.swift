@@ -25,13 +25,14 @@ enum NetworkError: Error {
 }
 
 class PokemonController {
-    private let baseURL = URL(string: "http://poke-api.vapor.cloud/pokemon-species")!
+    private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
     private var imageC: UIImage?
     var pokemon: Pokemon?
     var pokemonList: [Pokemon] = []
     
     func searchPokemon(pokemonName: String, completion: @escaping (Pokemon?, Error?) -> Void) {
-        let requestURL = baseURL.appendingPathComponent(pokemonName)
+        let lowercasedPokemonName = pokemonName.lowercased()
+        let requestURL = baseURL.appendingPathComponent(lowercasedPokemonName)
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
@@ -49,6 +50,7 @@ class PokemonController {
             
             do {
                 let pokemonData = try JSONDecoder().decode(Pokemon.self, from: data)
+                self.pokemon = pokemonData
                 completion(pokemonData, nil)
             } catch {
                 print("Error decoding pokemon: \(error)")
@@ -57,5 +59,4 @@ class PokemonController {
             }
         }.resume()
     }
-    
 }

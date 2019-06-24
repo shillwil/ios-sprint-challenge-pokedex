@@ -35,17 +35,26 @@ class PokemonDetailViewController: UIViewController {
     
     
     @IBAction func savePokemonButtonTapped(_ sender: UIButton) {
+        pokemonController?.pokemonList.append(pokemonController!.pokemon!)
         
     }
     
     func updateViews() {
         guard let pokemonController = self.pokemonController else { return }
         guard let pokemon = pokemonController.pokemon else { return }
+        var abilitiesList = ""
 //        guard let index = index else { return }
         idLabel.text = String(pokemon.id)
         pokemonNameLabel.text = pokemon.name
-        typesLabel.text = pokemon.type.name
-//        abilitiesLabel.text = pokemon.abilityInfo.abilities[index].name
+//        typesLabel.text = pokemon.type
+        for index in pokemon.abilities {
+            if abilitiesList.isEmpty {
+                abilitiesList = index.ability.name
+            } else if !abilitiesList.isEmpty {
+                abilitiesList = abilitiesList + ", " + index.ability.name
+                abilitiesLabel.text = abilitiesList
+            }
+        }
     }
     
 

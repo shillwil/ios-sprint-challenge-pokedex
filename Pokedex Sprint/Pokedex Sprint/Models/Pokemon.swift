@@ -10,30 +10,25 @@ import Foundation
 // MARK: - Structs
 struct Pokemon: Codable {
     let name: String
-    let type: Type
+//    let type: String
     let id: Int
-//    let abilityInfo: AbilityInfo
+    let abilities: [AbilityInfo]
 }
-
-//struct Species: Codable {
-//    let name: String
-//}
 
 //struct Types: Codable {
 //    let types: [Type]
 //}
 
-struct Type: Codable {
-    let name: String
-}
+//struct Type: Codable {
+//    let name: String
+//}
 
 struct AbilityInfo: Codable {
-    let abilities: [Ability]
+    let ability: Ability
 }
 
 struct Ability: Codable {
     let name: String
-    let url: String
 }
 
 
